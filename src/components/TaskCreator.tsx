@@ -1,13 +1,26 @@
 import React, { useState } from "react";
 
+type FormElemEvent = React.FormEvent<HTMLFormElement>;
+
+interface ITask {
+  name: string;
+  done: boolean;
+}
+
 export default function TaskCreator() {
-  type FormElemEvent = React.FormEvent<HTMLFormElement>;
 
   const [newTask, setNewTask] = useState<string>("");
+  const [tasks, setTasks] = useState<ITask[]>([]);
 
   const handlerSubmit = (e: FormElemEvent): void => {
     e.preventDefault();
-    console.log(newTask);
+    addTask(newTask);
+    setNewTask("");
+  };
+
+  const addTask = (name: string): void => {
+    const newTasks: ITask[] = [...tasks, { name, done: false }];
+    setTasks(newTasks);
   };
 
   return (
@@ -22,6 +35,9 @@ export default function TaskCreator() {
         />
         <button>Save</button>
       </form>
+      {tasks.map((t: ITask, i: number) => (
+        <h1 key={i}>{t.name}</h1>
+      ))}
     </div>
   );
 }
