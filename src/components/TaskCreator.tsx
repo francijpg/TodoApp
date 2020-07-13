@@ -8,7 +8,6 @@ interface ITask {
 }
 
 export default function TaskCreator() {
-
   const [newTask, setNewTask] = useState<string>("");
   const [tasks, setTasks] = useState<ITask[]>([]);
 
@@ -21,6 +20,12 @@ export default function TaskCreator() {
   const addTask = (name: string): void => {
     const newTasks: ITask[] = [...tasks, { name, done: false }];
     setTasks(newTasks);
+  };
+
+  const toogleDoneTast = (i: number) => {
+    const newsTasks: ITask[] = [...tasks];
+    newsTasks[i].done = !newsTasks[i].done;
+    setTasks(newsTasks);
   };
 
   return (
@@ -36,7 +41,14 @@ export default function TaskCreator() {
         <button>Save</button>
       </form>
       {tasks.map((t: ITask, i: number) => (
-        <h1 key={i}>{t.name}</h1>
+        <div key={i}>
+          <h1 style={{ textDecoration: t.done ? "line-through" : "" }}>
+            {t.name}
+          </h1>
+          <button onClick={() => toogleDoneTast(i)}>
+            {t.done ? "TODO" : "DONE"}
+          </button>
+        </div>
       ))}
     </div>
   );
