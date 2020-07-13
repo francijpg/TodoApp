@@ -7,7 +7,7 @@ interface ITask {
   done: boolean;
 }
 
-export default function TaskCreator() {
+const TaskCreator: React.FC = () => {
   const [newTask, setNewTask] = useState<string>("");
   const [tasks, setTasks] = useState<ITask[]>([]);
 
@@ -53,3 +53,5 @@ export default function TaskCreator() {
     </div>
   );
 }
+
+export default TaskCreator;
