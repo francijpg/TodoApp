@@ -58,14 +58,13 @@ const TaskCreator: React.FC = () => {
                   <h1 style={{ textDecoration: t.done ? "line-through" : "" }}>
                     {t.name}
                   </h1>
-                  <button onClick={() => toogleDoneTast(i)}>
+                  <button onClick={() => toogleDoneTast(i)} className="btn btn-outline-success">
                     {t.done ? "TODO" : "DONE"}
                   </button>
                   <button
                     onClick={() => removeTask(i)}
-                    className="btn btn-danger"
-                  >
-                    x
+                    className="btn btn-outline-danger"
+                  >Delete
                   </button>
                 </div>
               ))}
