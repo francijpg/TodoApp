@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Todo, FormElemEvent } from "./types";
 
 interface ITask {
   name: string;
