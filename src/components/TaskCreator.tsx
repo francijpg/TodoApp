@@ -27,6 +27,12 @@ const TaskCreator: React.FC = () => {
     setTasks(newsTasks);
   };
 
+  const removeTask = (i: number): void => {
+    const newTasks: ITask[] = [...tasks];
+    newTasks.splice(i, 1);
+    setTasks(newTasks);
+  };
+
   return (
     <div className="container p-4">
       <div className="row">
@@ -54,6 +60,12 @@ const TaskCreator: React.FC = () => {
                   </h1>
                   <button onClick={() => toogleDoneTast(i)}>
                     {t.done ? "TODO" : "DONE"}
+                  </button>
+                  <button
+                    onClick={() => removeTask(i)}
+                    className="btn btn-danger"
+                  >
+                    x
                   </button>
                 </div>
               ))}
