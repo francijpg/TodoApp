@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-
-type FormElemEvent = React.FormEvent<HTMLFormElement>;
+import { Todo, FormElemEvent } from "./types";
 
 interface ITask {
   name: string;
   done: boolean;
+  // todo: Todo;
 }
 
 const TaskCreator: React.FC = () => {
