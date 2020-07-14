@@ -17,6 +17,12 @@ function App() {
     setTodos(newsTodos);
   };
 
+  const removeTodo: ToggleDone = (indexTodo) => {
+    const newTodos: Todo[] = [...todos];
+    newTodos.splice(indexTodo, 1);
+    setTodos(newTodos);
+  };
+
   return (
     <div className="container p-4">
       <div className="row">
@@ -27,7 +33,7 @@ function App() {
             </div>
             <div className="card-body">
               <TodoCreator addTodo={addTodo} />
-              <TodoList todos={todos} toggleDone={toggleDone}/>
+              <TodoList todos={todos} toggleDone={toggleDone} removeTodo={removeTodo}/>
             </div>
           </div>
         </div>

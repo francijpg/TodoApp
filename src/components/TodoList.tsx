@@ -3,9 +3,10 @@ import React from "react";
 interface TodoListProps {
   todos: Array<Todo>;
   toggleDone: ToggleDone;
+  removeTodo: ToggleDone;
 }
 
-export const TodoList: React.FC<TodoListProps> = ({ todos, toggleDone }) => {
+export const TodoList: React.FC<TodoListProps> = ({ todos, toggleDone, removeTodo }) => {
 
   return (
     <div>
@@ -22,7 +23,7 @@ export const TodoList: React.FC<TodoListProps> = ({ todos, toggleDone }) => {
             {t.done ? "TODO" : "DONE"}
           </button>
           <button
-            // onClick={() => removeTask(i)}
+            onClick={() => removeTodo(i)}
             className="btn btn-outline-danger"
           >
             Delete
