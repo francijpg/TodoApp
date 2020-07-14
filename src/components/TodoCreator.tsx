@@ -1,10 +1,4 @@
 import React, { useState } from "react";
-// import { TodoList } from "./TodoList";
-
-// interface ITask {
-//   name: string;
-//   done: boolean;
-// }
 
 interface TodoCreatorProps {
   addTodo: AddTodo;
@@ -12,9 +6,6 @@ interface TodoCreatorProps {
 
 const TodoCreator: React.FC<TodoCreatorProps> = ({ addTodo }) => {
   const [newTodo, setNewTodo] = useState<string>("");
-
-  // const [newTask, setNewTask] = useState<string>("");
-  // const [tasks, setTasks] = useState<ITask[]>([]);
 
   const handlerSubmit = (e: ButtonElemEvent): void => {
     e.preventDefault();
@@ -25,23 +16,6 @@ const TodoCreator: React.FC<TodoCreatorProps> = ({ addTodo }) => {
   const handlerChange = (e: InputChangeElemEvent): void => {
     setNewTodo(e.target.value);
   };
-
-  // const addTask = (name: string): void => {
-  //   const newTasks: ITask[] = [...tasks, { name, done: false }];
-  //   setTasks(newTasks);
-  // };
-
-  // const toogleDoneTast = (i: number) => {
-  //   const newsTasks: ITask[] = [...tasks];
-  //   newsTasks[i].done = !newsTasks[i].done;
-  //   setTasks(newsTasks);
-  // };
-
-  // const removeTask = (i: number): void => {
-  //   const newTasks: ITask[] = [...tasks];
-  //   newTasks.splice(i, 1);
-  //   setTasks(newTasks);
-  // };
 
   return (
     <div>
@@ -62,22 +36,6 @@ const TodoCreator: React.FC<TodoCreatorProps> = ({ addTodo }) => {
           Add
         </button>
       </form>
-      {/* <TodoList todos={tasks} /> */}
-      {/* {tasks.map((t: ITask, i: number) => (
-                <div key={i}>
-                  <h1 style={{ textDecoration: t.done ? "line-through" : "" }}>
-                    {t.name}
-                  </h1>
-                  <button onClick={() => toogleDoneTast(i)} className="btn btn-outline-success">
-                    {t.done ? "TODO" : "DONE"}
-                  </button>
-                  <button
-                    onClick={() => removeTask(i)}
-                    className="btn btn-outline-danger"
-                  >Delete
-                  </button>
-                </div>
-              ))} */}
     </div>
   );
 };
