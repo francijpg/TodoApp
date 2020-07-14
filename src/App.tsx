@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import TodoCreator from "./components/TodoCreator";
 import { TodoList } from "./components/TodoList";
-
-const todosMockUp: Array<Todo> = [{ name: "hola", done: false }];
+import { initialTodos } from "./components/initialTodos";
 
 function App() {
-  const [todos, setTodos] = useState<Array<Todo>>(todosMockUp);
+  const [todos, setTodos] = useState<Array<Todo>>(initialTodos);
 
   const addTodo: AddTodo = (newTodo) => {
     newTodo.trim() !== "" &&

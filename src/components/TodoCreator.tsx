@@ -59,7 +59,7 @@ const TodoCreator: React.FC<TodoCreatorProps> = ({ addTodo }) => {
           onClick={handlerSubmit}
           className="btn btn-success btn-block mt-2"
         >
-          Save
+          Add
         </button>
       </form>
       {/* <TodoList todos={tasks} /> */}

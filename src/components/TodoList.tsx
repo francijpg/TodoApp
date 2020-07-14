@@ -10,6 +10,7 @@ export const TodoList: React.FC<TodoListProps> = ({ todos }) => {
   return (
     <div>
       {todos.map((t: Todo, i: number) => (
+        
         <div key={i}>
           <h3 style={{ textDecoration: t.done ? "line-through" : "" }}>
             {t.name}
