@@ -2,10 +2,10 @@ import React from "react";
 
 interface TodoListProps {
   todos: Array<Todo>;
-  // toggleDone: ToggleDone;
+  toggleDone: ToggleDone;
 }
 
-export const TodoList: React.FC<TodoListProps> = ({ todos }) => {
+export const TodoList: React.FC<TodoListProps> = ({ todos, toggleDone }) => {
 
   return (
     <div>
@@ -15,8 +15,8 @@ export const TodoList: React.FC<TodoListProps> = ({ todos }) => {
           <h3 style={{ textDecoration: t.done ? "line-through" : "" }}>
             {t.name}
           </h3>
-          {/* <button
-            // onClick={() => toggleDone(i)}
+          <button
+            onClick={() => toggleDone(i) }
             className="btn btn-outline-success"
           >
             {t.done ? "TODO" : "DONE"}
@@ -26,7 +26,7 @@ export const TodoList: React.FC<TodoListProps> = ({ todos }) => {
             className="btn btn-outline-danger"
           >
             Delete
-          </button> */}
+          </button>
         </div>
       ))}
     </div>

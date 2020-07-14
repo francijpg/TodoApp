@@ -5,7 +5,7 @@ type Todo = {
 
 type AddTodo = (newTodo: string) => void;
 
-type ToggleDone = (selectedTodo: Todo) => void;
+type ToggleDone = (indexTodo: number) => void;
 
 type ButtonElemEvent = React.FormEvent<HTMLButtonElement>;
 type InputChangeElemEvent = React.ChangeEvent<HTMLInputElement>

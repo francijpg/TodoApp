@@ -11,11 +11,11 @@ function App() {
       setTodos([...todos, { name: newTodo, done: false }]);
   };
 
-  // const toggleDone: ToggleDone = (i:number): void => {
-  //   const newsTasks: Todo[] = [...todos];
-  //   newsTasks[i].done = !newsTasks[i].done;
-  //   setTodos(newsTasks);
-  // };
+  const toggleDone: ToggleDone = (indexTodo) => {
+    const newsTodos: Todo[] = [...todos];
+    newsTodos[indexTodo].done = !newsTodos[indexTodo].done;
+    setTodos(newsTodos);
+  };
 
   return (
     <div className="container p-4">
@@ -27,7 +27,7 @@ function App() {
             </div>
             <div className="card-body">
               <TodoCreator addTodo={addTodo} />
-              <TodoList todos={todos} />
+              <TodoList todos={todos} toggleDone={toggleDone}/>
             </div>
           </div>
         </div>
