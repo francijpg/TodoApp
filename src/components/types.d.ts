@@ -3,4 +3,9 @@ type Todo = {
   done: boolean;
 };
 
-type FormElemEvent = React.FormEvent<HTMLFormElement>;
+type AddTodo = (newTodo: string) => void;
+
+type ToggleDone = (selectedTodo: Todo) => void;
+
+type ButtonElemEvent = React.FormEvent<HTMLButtonElement>;
+type InputChangeElemEvent = React.ChangeEvent<HTMLInputElement>
