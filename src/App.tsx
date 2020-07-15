@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import TodoCreator from "./components/TodoCreator";
 import { TodoList } from "./components/TodoList";
 import { initialTodos } from "./components/initialTodos";
+import { TodoHeader } from "./components/TodoHeader";
 
 function App() {
   const [todos, setTodos] = useState<Array<Todo>>(initialTodos);
@@ -42,7 +43,7 @@ function App() {
         <div className="col-md-6 offset-md-3">
           <div className="card">
             <div className="card-header">
-              <h2 className="text-center">TODO LIST</h2>
+              <TodoHeader todos={todos}/>
             </div>
             <div className="card-body">
               <TodoCreator addTodo={addTodo} />
