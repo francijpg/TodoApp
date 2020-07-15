@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import TodoCreator from "./components/TodoCreator";
 import { TodoList } from "./components/TodoList";
 import { initialTodos } from "./components/initialTodos";
@@ -23,6 +23,19 @@ function App() {
     setTodos(newTodos);
   };
 
+  useEffect(() => {
+    let data: string = localStorage.getItem("todos") as string;
+    if (data !== "[]") {
+      setTodos(JSON.parse(data));
+    } else {
+      setTodos(initialTodos);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
   return (
     <div className="container p-4">
       <div className="row">
@@ -33,7 +46,11 @@ function App() {
             </div>
             <div className="card-body">
               <TodoCreator addTodo={addTodo} />
-              <TodoList todos={todos} toggleDone={toggleDone} removeTodo={removeTodo}/>
+              <TodoList
+                todos={todos}
+                toggleDone={toggleDone}
+                removeTodo={removeTodo}
+              />
             </div>
           </div>
         </div>
