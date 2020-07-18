@@ -27,6 +27,7 @@ const TodoCreator: React.FC<TodoCreatorProps> = ({ addTodo }) => {
           value={newTodo}
           onChange={handlerChange}
           className="form-control"
+          placeholder = "Something to do?"
         />
         <button
           type="submit"

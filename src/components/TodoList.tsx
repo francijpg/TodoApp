@@ -13,54 +13,39 @@ export const TodoList: React.FC<TodoListProps> = ({
 }) => {
   return (
     <div>
-      {todos.map((t: Todo, i: number) => (
-        <div key={i}>
-          {/* <h3 style={{ textDecoration: t.done ? "line-through" : "" }}>
-            {t.name}
-          </h3>
-          <button
-            onClick={() => toggleDone(i)}
-            className="btn btn-outline-success"
-          >
-            {t.done ? "TODO" : "DONE"}
-          </button>
-          <button
-            onClick={() => removeTodo(i)}
-            className="btn btn-outline-danger"
-          >
-            Delete
-          </button> */}
-          <table className="table table-hover">
-            <thead>
-              <tr>
-                <th>Task</th>
-                <th className="float-right">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="table-default">
-                <td style={{ textDecoration: t.done ? "line-through" : "" }}>
-                  <p className="text-break text-capitalize">{t.name}</p>
-                </td>
-                <td className="float-right">
-                  <button
-                    onClick={() => toggleDone(i)}
-                    className="btn btn-outline-success badge-pill"
-                  >
-                    {t.done ? "TODO" : "DONE"}
-                  </button>
-                  <button
-                    onClick={() => removeTodo(i)}
-                    className="btn btn-outline-danger badge-pill ml-1"
-                  >
-                    X
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      ))}
+      <table className="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Task</th>
+            <th scope="col" className="float-right">
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {todos.map((t: Todo, i: number) => (
+            <tr className="table-default" key={i}>
+              <td style={{ textDecoration: t.done ? "line-through" : "" }}>
+                <p className="text-capitalize text-justify">{t.name}</p>
+              </td>
+              <td className="float-right">
+                <button
+                  onClick={() => toggleDone(i)}
+                  className="btn btn-outline-success badge-pill"
+                >
+                  {t.done ? "☻" : "✔"}
+                </button>
+                <button
+                  onClick={() => removeTodo(i)}
+                  className="btn btn-outline-danger badge-pill"
+                >
+                  ✖
+                </button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
