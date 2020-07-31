@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, FormEvent } from "react";
 
 interface TodoCreatorProps {
   addTodo: AddTodo;
@@ -7,7 +7,7 @@ interface TodoCreatorProps {
 const TodoCreator: React.FC<TodoCreatorProps> = ({ addTodo }) => {
   const [newTodo, setNewTodo] = useState<string>("");
 
-  const handlerSubmit = (e: ButtonElemEvent): void => {
+  const handlerSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     addTodo(newTodo);
     setNewTodo("");
@@ -19,7 +19,7 @@ const TodoCreator: React.FC<TodoCreatorProps> = ({ addTodo }) => {
 
   return (
     <div>
-      <form>
+      <form onSubmit={handlerSubmit}>
         <input
           type="text"
           autoFocus
@@ -31,7 +31,6 @@ const TodoCreator: React.FC<TodoCreatorProps> = ({ addTodo }) => {
         />
         <button
           type="submit"
-          onClick={handlerSubmit}
           className="btn btn-success btn-block mt-2"
         >
           Add
