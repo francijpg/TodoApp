@@ -4,7 +4,7 @@ import { TodoList } from "./components/TodoList";
 import { initialTodos } from "./components/initialTodos";
 import { TodoHeader } from "./components/TodoHeader";
 
-function App() {
+export const useTodos = () => {
   const [todos, setTodos] = useState<Array<Todo>>(initialTodos);
 
   const addTodo: AddTodo = (newTodo) => {
@@ -12,7 +12,7 @@ function App() {
       setTodos([...todos, { name: newTodo, done: false }]);
   };
 
-  const toggleDone: ToggleDone = (indexTodo) => {
+  const toggleDone: ToggleDone = indexTodo => {
     const newsTodos: Todo[] = [...todos];
     newsTodos[indexTodo].done = !newsTodos[indexTodo].done;
     setTodos(newsTodos);
@@ -37,13 +37,19 @@ function App() {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
 
+  return { todos, addTodo, toggleDone, removeTodo };
+};
+
+function App() {
+  const { todos, addTodo, toggleDone, removeTodo } = useTodos();
+
   return (
     <div className="container p-4">
       <div className="row">
         <div className="col-md-6 offset-md-3">
           <div className="card">
             <div className="card-header">
-              <TodoHeader todos={todos}/>
+              <TodoHeader todos={todos} />
             </div>
             <div className="card-body">
               <TodoCreator addTodo={addTodo} />
