@@ -23,20 +23,20 @@ export const TodoList: React.FC<TodoListProps> = ({
           </tr>
         </thead>
         <tbody>
-          {todos.map((t: Todo, i: number) => (
-            <tr className="table-default" key={i}>
-              <td style={{ textDecoration: t.done ? "line-through" : "" }}>
-                <p className="text-capitalize text-justify">{t.name}</p>
+          { todos.map((todo: Todo, index: number) => (
+            <tr className="table-default" key={index}>
+              <td style={{ textDecoration: todo.done ? "line-through" : "" }}>
+                <p className="text-capitalize text-justify">{todo.name}</p>
               </td>
               <td className="float-right">
                 <button
-                  onClick={() => toggleDone(i)}
+                  onClick={() => toggleDone(index)}
                   className="btn btn-outline-success badge-pill"
                 >
-                  {t.done ? "☻" : "✔"}
+                  {todo.done ? "☻" : "✔"}
                 </button>
                 <button
-                  onClick={() => removeTodo(i)}
+                  onClick={() => removeTodo(index)}
                   className="btn btn-outline-danger badge-pill"
                 >
                   ✖
