@@ -37,5 +37,17 @@ describe("App", () => {
       expect(props.todos[2].name).toEqual(mockNewTodo);
     });
 
+    it("toggleDone", () => {
+      const Test = (props: any) => {
+        const hook = props.hook();
+        return <div {...hook} />;
+      };
+      const wrapper = shallow(<Test hook={useTodos} />);
+      let props: any = wrapper.find("div").props();
+      props.toggleDone(1);
+      props = wrapper.find("div").props();
+      expect(props.todos[1].done).toEqual(true);
+    });
+
   });
 });
