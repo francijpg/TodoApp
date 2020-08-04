@@ -7,12 +7,12 @@ import { TodoHeader } from "./components/TodoHeader";
 export const useTodos = () => {
   const [todos, setTodos] = useState<Array<Todo>>(initialTodos);
 
-  const addTodo: AddTodo = (newTodo) => {
+  const addTodo: AddTodo = newTodo => {
     newTodo.trim() !== "" &&
-      setTodos([...todos, { name: newTodo, done: false }]);
+      setTodos([...todos, { name: newTodo, done: false } ]);
   };
 
-  const toggleDone: ToggleDone = indexTodo => {
+  const toggleDone: ToggleDone = (indexTodo) => {
     const newsTodos: Todo[] = [...todos];
     newsTodos[indexTodo].done = !newsTodos[indexTodo].done;
     setTodos(newsTodos);
@@ -26,10 +26,11 @@ export const useTodos = () => {
 
   useEffect(() => {
     let data: string = localStorage.getItem("todos") as string;
-    if (data !== "[]") {
-      setTodos(JSON.parse(data));
-    } else {
+  // !!data || JSON.parse(data).length === 0 ? setTodos(JSON.parse(data)) : setTodos(initialTodos)
+    if (data === null || JSON.parse(data).length === 0) {
       setTodos(initialTodos);
+    } else {
+      setTodos(JSON.parse(data));
     }
   }, []);
 
