@@ -26,7 +26,6 @@ export const useTodos = () => {
 
   useEffect(() => {
     let data: string = localStorage.getItem("todos") as string;
-  // !!data || JSON.parse(data).length === 0 ? setTodos(JSON.parse(data)) : setTodos(initialTodos)
     if (data === null || JSON.parse(data).length === 0) {
       setTodos(initialTodos);
     } else {
