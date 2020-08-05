@@ -8,9 +8,9 @@ export const TodoHeader: React.FC<TodoHeaderProps> = ({ todos }) => {
   return (
     <>
       <h2 className="text-center">TODO APP</h2>
-      <p className="text-white text-center">
+      <h6 className="text-white text-center">
         {todos.filter((t) => !t.done).length} pending tasks to do
-      </p>
+      </h6>
     </>
   );
 };
