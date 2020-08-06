@@ -3,10 +3,22 @@ import App, { useTodos } from "./App";
 import { configure, shallow } from "enzyme";
 import EnzymeAdapter from "enzyme-adapter-react-16";
 import TodoCreator from "./components/TodoCreator";
+import { TodoHeader } from "./components/TodoHeader";
 
 configure({ adapter: new EnzymeAdapter() });
 
-describe("App", () => {
+describe("App", () => { 
+  describe("TodoHeader", () => {
+    it("count pending tasks to do", () => {
+      const todos: Array<Todo> = [
+        { name: "read a book", done: true },
+        { name: "to make dinner", done: false }
+      ];
+      const wrapper = shallow(<TodoHeader todos={todos} />);
+      expect(wrapper.find("h6").text().includes("1")).toEqual(true);
+    });
+  });
+
   describe("TodoCreator", () => {
     it("addTodo when form contain a new value", () => {
       const addTodo = jest.fn();
