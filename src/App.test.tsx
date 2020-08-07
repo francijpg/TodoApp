@@ -4,6 +4,7 @@ import { configure, shallow } from "enzyme";
 import EnzymeAdapter from "enzyme-adapter-react-16";
 import TodoCreator from "./components/TodoCreator";
 import { TodoHeader } from "./components/TodoHeader";
+import { TodoList } from "./components/TodoList";
 
 configure({ adapter: new EnzymeAdapter() });
 
@@ -32,6 +33,25 @@ describe("App", () => {
 
       expect(addTodo.mock.calls).toEqual([[mockNewTodo]]);
       expect(prevent.mock.calls).toEqual([[]]);
+    });
+  });
+
+  describe("TodoList", () => {
+    it("list tasks already done and to do", () => {
+      const todos: Array<Todo> = [
+        { name: "read a book", done: true }
+      ];
+      const toggleDone = jest.fn()
+      const removeTodo = jest.fn()
+      const wrapper = shallow(
+        <TodoList 
+          todos={todos}
+          toggleDone={toggleDone}
+          removeTodo={removeTodo}
+        />);
+      const response = wrapper.find(".table-default").at(0).text().includes(todos[0].name)
+      
+      expect(response).toEqual(true)
     });
   });
 
