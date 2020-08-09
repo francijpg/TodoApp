@@ -81,5 +81,22 @@ describe("App", () => {
       expect(props.todos[1].done).toEqual(true);
     });
 
+    it("removeTodo", () => {
+      const Test = (props: any) => {
+        const hook = props.hook();
+        return <div {...hook} />;
+      };
+      const wrapper = shallow(<Test hook={useTodos} />);
+      let props: any = wrapper.find("div").props();
+      props.removeTodo(1);
+      props = wrapper.find("div").props();
+      expect(props.todos).toEqual([
+        {
+          name: "learn something new",
+          done: true,
+        },
+      ]);
+    });
+
   });
 });
