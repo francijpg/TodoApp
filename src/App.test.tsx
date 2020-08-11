@@ -1,6 +1,6 @@
 import React from "react";
 import App, { useTodos } from "./App";
-import { configure, shallow } from "enzyme";
+import { configure, shallow, mount } from "enzyme";
 import EnzymeAdapter from "enzyme-adapter-react-16";
 import TodoCreator from "./components/TodoCreator";
 import { TodoHeader } from "./components/TodoHeader";
@@ -98,5 +98,20 @@ describe("App", () => {
       ]);
     });
 
+    it("App", () => {
+      const wrapper = mount(<App />);
+      const prevent = jest.fn();
+      const header = wrapper.find("h6");
+      const mockNewTodo = "new task";
+      wrapper
+        .find("input")
+        .simulate("change", { target: { value: mockNewTodo } });
+      wrapper.find("form").simulate("submit", { preventDefault: prevent });
+      const response = wrapper.find(".table-default").at(0).text().includes(mockNewTodo);
+
+      expect(response).toEqual(false);
+      expect(prevent.mock.calls).toEqual([[]]);
+      expect(header.text()).toEqual('1 pending tasks to do')
+    });
   });
 });
